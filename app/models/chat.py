@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from uuid import UUID
 
 
 class ChatRequest(BaseModel):
@@ -9,14 +10,10 @@ class ChatRequest(BaseModel):
         description="User's message",
     )
 
-    conversation_id: str = Field(
-        ...,
-        min_length=1,
-        description="Temporary conversation identifier",
-    )
+    conversation_id: UUID | None = None
 
 
 class ChatResponse(BaseModel):
-    conversation_id: str
+    conversation_id: UUID
     answer: str
 

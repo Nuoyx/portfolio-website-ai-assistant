@@ -20,13 +20,13 @@ async def chat(
     chat_service: ChatService = Depends(get_chat_service),
 ):
 
-    answer = await chat_service.process_message(
+    conversation_id, answer = await chat_service.process_message(
         message=request.message,
         conversation_id=request.conversation_id,
     )
 
     return ChatResponse(
-        conversation_id=request.conversation_id,
+        conversation_id=conversation_id,
         answer=answer,
     )
 
