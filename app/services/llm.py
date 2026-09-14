@@ -8,6 +8,5 @@ def create_llm() -> ChatGoogleGenerativeAI:
 
     return ChatGoogleGenerativeAI(
         model=settings.gemini_model,
-        google_api_key=settings.gemini_api_key,
-        temperature=0.7,
+        api_key=settings.gemini_api_key,
     )
